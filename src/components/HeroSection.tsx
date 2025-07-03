@@ -4,7 +4,7 @@ import ThreeBackground from './ThreeBackground'
 
 export default function HeroSection() {
   const scrollToNext = () => {
-    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })
+    document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
@@ -22,26 +22,17 @@ export default function HeroSection() {
           className="space-y-8"
         >
           <motion.h1 
-            className="text-6xl md:text-8xl font-bold leading-tight"
+            className="text-5xl md:text-7xl font-bold leading-tight"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, delay: 0.4 }}
           >
-            <span className="block text-foreground">Creative</span>
+            <span className="block text-foreground">OPTIMIZE the</span>
             <span className="block bg-gradient-primary bg-clip-text text-transparent">
-              Developer
+              WORLD
             </span>
+            <span className="block text-foreground">through Data</span>
           </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
-          >
-            Crafting digital experiences with precision, passion, and cutting-edge technology. 
-            Turning ideas into immersive web applications.
-          </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 50 }}

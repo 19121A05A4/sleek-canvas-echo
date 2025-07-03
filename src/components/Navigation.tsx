@@ -3,8 +3,10 @@ import { motion } from 'framer-motion'
 
 const navItems = [
   { name: 'Home', href: '#hero' },
-  { name: 'About', href: '#about' },
-  { name: 'Projects', href: '#projects' },
+  { name: 'About', href: '#about', conditional: true },
+  { name: 'Work', href: '#work' },
+  { name: 'Blogs', href: '#blogs' },
+  { name: 'Projects', href: '#projects', conditional: true },
   { name: 'Contact', href: '#contact' },
 ]
 
@@ -17,7 +19,7 @@ export default function Navigation() {
       setIsScrolled(window.scrollY > 50)
 
       // Update active section based on scroll position
-      const sections = ['hero', 'about', 'projects', 'contact']
+      const sections = ['hero', 'work', 'blogs', 'contact']
       const current = sections.find(section => {
         const element = document.getElementById(section)
         if (element) {
@@ -34,9 +36,18 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const handleClick = (href: string) => {
-    const element = document.querySelector(href)
-    element?.scrollIntoView({ behavior: 'smooth' })
+  const handleClick = (href: string, isConditional: boolean = false) => {
+    if (isConditional) {
+      // For conditional sections, show them and scroll
+      const element = document.querySelector(href) as HTMLElement
+      if (element) {
+        element.style.display = 'block'
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    } else {
+      const element = document.querySelector(href)
+      element?.scrollIntoView({ behavior: 'smooth' })
+    }
   }
 
   return (
@@ -57,7 +68,7 @@ export default function Navigation() {
             transition={{ delay: 0.2 }}
             className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent"
           >
-            Portfolio
+            <strong>Sai</strong> Katari
           </motion.div>
 
           <div className="hidden md:flex items-center space-x-8">
@@ -67,7 +78,7 @@ export default function Navigation() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * index }}
-                onClick={() => handleClick(item.href)}
+                onClick={() => handleClick(item.href, item.conditional)}
                 className={`relative px-4 py-2 text-sm font-medium transition-colors duration-300 ${
                   activeSection === item.href.slice(1)
                     ? 'text-primary'
