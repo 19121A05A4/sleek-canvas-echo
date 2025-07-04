@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import Navigation from '@/components/Navigation'
 import HeroSection from '@/components/HeroSection'
 import AboutSection from '@/components/AboutSection'
@@ -8,19 +9,88 @@ import ContactSection from '@/components/ContactSection'
 import Footer from '@/components/Footer'
 
 const Index = () => {
+  const [currentSection, setCurrentSection] = useState('home')
+
+  useEffect(() => {
+    const handleSectionChange = () => {
+      const hash = window.location.hash
+      if (hash === '#about') {
+        setCurrentSection('about')
+      } else if (hash === '#projects') {
+        setCurrentSection('projects')
+      } else if (hash === '#work') {
+        setCurrentSection('work')
+      } else if (hash === '#blogs') {
+        setCurrentSection('blogs')
+      } else if (hash === '#contact') {
+        setCurrentSection('contact')
+      } else {
+        setCurrentSection('home')
+      }
+    }
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', handleSectionChange)
+    
+    // Check initial hash
+    handleSectionChange()
+
+    return () => window.removeEventListener('hashchange', handleSectionChange)
+  }, [])
+
+  // Render only the selected section when navigating via tabs
+  if (currentSection === 'about') {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navigation />
+        <AboutSection />
+      </div>
+    )
+  }
+
+  if (currentSection === 'projects') {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navigation />
+        <ProjectsSection />
+      </div>
+    )
+  }
+
+  if (currentSection === 'work') {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navigation />
+        <WorkSection />
+      </div>
+    )
+  }
+
+  if (currentSection === 'blogs') {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navigation />
+        <BlogsSection />
+      </div>
+    )
+  }
+
+  if (currentSection === 'contact') {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navigation />
+        <ContactSection />
+      </div>
+    )
+  }
+
+  // Default home view with scrollable sections
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
       <HeroSection />
-      <div id="about" style={{ display: 'none' }}>
-        <AboutSection />
-      </div>
       <WorkSection />
       <BlogsSection />
-      <div id="projects" style={{ display: 'none' }}>
-        <ProjectsSection />
-      </div>
-      <ContactSection />
       <Footer />
     </div>
   );

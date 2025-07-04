@@ -27,11 +27,42 @@ export default function HeroSection() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, delay: 0.4 }}
           >
-            <span className="block text-foreground">OPTIMIZE the</span>
-            <span className="block bg-gradient-primary bg-clip-text text-transparent">
+            <span 
+              className="block text-6xl md:text-8xl font-black"
+              style={{
+                background: 'linear-gradient(135deg, hsl(260 100% 65%), hsl(280 100% 70%)), url("data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Cpath d="m0 40l40-40h-40z"/%3E%3Cpath d="m0 0l20 20-20 20z"/%3E%3C/g%3E%3C/svg%3E")',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                color: 'transparent',
+                textShadow: '0 0 40px rgba(138, 43, 226, 0.3)'
+              }}
+            >
+              OPTIMIZE the
+            </span>
+            <span 
+              className="block text-6xl md:text-8xl font-black"
+              style={{
+                background: 'linear-gradient(135deg, hsl(280 100% 70%), hsl(260 100% 65%)), url("data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23ffffff" fill-opacity="0.15"%3E%3Cpath d="m40 0l-40 40h40z"/%3E%3Cpath d="m40 40l-20-20 20-20z"/%3E%3C/g%3E%3C/svg%3E")',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                color: 'transparent',
+                textShadow: '0 0 40px rgba(138, 43, 226, 0.5)'
+              }}
+            >
               WORLD
             </span>
-            <span className="block text-foreground">through Data</span>
+            <span 
+              className="block text-6xl md:text-8xl font-black"
+              style={{
+                background: 'linear-gradient(135deg, hsl(260 100% 65%), hsl(280 100% 70%)), url("data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Cpath d="m0 40l40-40h-40z"/%3E%3Cpath d="m0 0l20 20-20 20z"/%3E%3C/g%3E%3C/svg%3E")',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                color: 'transparent',
+                textShadow: '0 0 40px rgba(138, 43, 226, 0.3)'
+              }}
+            >
+              through Data
+            </span>
           </motion.h1>
 
           <motion.div
@@ -57,7 +88,7 @@ export default function HeroSection() {
         >
           <button
             onClick={scrollToNext}
-            className="flex flex-col items-center text-muted-foreground hover:text-primary transition-colors duration-300 animate-float"
+            className="flex flex-col items-center text-muted-foreground hover:text-primary transition-colors duration-300 animate-bounce"
           >
             <span className="text-sm mb-2 font-medium">Scroll Down</span>
             <ArrowDown className="w-5 h-5" />

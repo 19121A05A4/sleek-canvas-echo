@@ -37,14 +37,15 @@ export default function Navigation() {
   }, [])
 
   const handleClick = (href: string, isConditional: boolean = false) => {
-    if (isConditional) {
-      // For conditional sections, show them and scroll
-      const element = document.querySelector(href) as HTMLElement
-      if (element) {
-        element.style.display = 'block'
-        element.scrollIntoView({ behavior: 'smooth' })
-      }
+    if (isConditional || href === '#about' || href === '#projects') {
+      // For conditional sections, use hash navigation
+      window.location.hash = href
+    } else if (href === '#hero') {
+      // For home, clear hash and scroll to top
+      window.location.hash = ''
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     } else {
+      // For regular sections, scroll to them
       const element = document.querySelector(href)
       element?.scrollIntoView({ behavior: 'smooth' })
     }
@@ -62,14 +63,15 @@ export default function Navigation() {
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <motion.div
+          <motion.button
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent"
+            onClick={() => handleClick('#hero')}
+            className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent cursor-pointer"
           >
             <strong>Sai</strong> Katari
-          </motion.div>
+          </motion.button>
 
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item, index) => (
@@ -96,17 +98,6 @@ export default function Navigation() {
               </motion.button>
             ))}
           </div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="hidden md:block"
-          >
-            <button className="px-6 py-2 bg-gradient-primary text-primary-foreground rounded-full font-medium hover:shadow-glow-primary transition-all duration-300">
-              Get In Touch
-            </button>
-          </motion.div>
         </div>
       </div>
     </motion.nav>
