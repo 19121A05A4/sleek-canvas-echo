@@ -22,51 +22,13 @@ export default function HeroSection() {
           className="space-y-8"
         >
           <motion.h1 
-            className="text-5xl md:text-7xl font-bold leading-tight"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-tight text-center"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, delay: 0.4 }}
           >
-            <div className="flex flex-col items-center space-y-4">
-              <span 
-                className="block text-6xl md:text-8xl font-black hero-mask-text"
-                style={{
-                  background: 'url("data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cdefs%3E%3Cpattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"%3E%3Cpath d="M 10 0 L 0 0 0 10" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.3"/%3E%3C/pattern%3E%3C/defs%3E%3Crect width="100" height="100" fill="url(%23grid)" /%3E%3C/svg%3E"), linear-gradient(135deg, hsl(260 100% 65%), hsl(280 100% 70%))',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  color: 'transparent',
-                  textShadow: '0 0 40px rgba(138, 43, 226, 0.4)',
-                  filter: 'drop-shadow(0 0 20px rgba(138, 43, 226, 0.3))'
-                }}
-              >
-                OPTIMIZE the
-              </span>
-              <span 
-                className="block text-6xl md:text-8xl font-black hero-mask-text"
-                style={{
-                  background: 'url("data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cdefs%3E%3Cpattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"%3E%3Ccircle cx="10" cy="10" r="2" fill="%23ffffff" opacity="0.4"/%3E%3C/pattern%3E%3C/defs%3E%3Crect width="100" height="100" fill="url(%23dots)" /%3E%3C/svg%3E"), linear-gradient(135deg, hsl(280 100% 70%), hsl(260 100% 65%))',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  color: 'transparent',
-                  textShadow: '0 0 40px rgba(138, 43, 226, 0.6)',
-                  filter: 'drop-shadow(0 0 20px rgba(138, 43, 226, 0.4))'
-                }}
-              >
-                WORLD
-              </span>
-              <span 
-                className="block text-6xl md:text-8xl font-black hero-mask-text"
-                style={{
-                  background: 'url("data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cdefs%3E%3Cpattern id="lines" width="15" height="15" patternUnits="userSpaceOnUse"%3E%3Cpath d="M 0 15 L 15 0" stroke="%23ffffff" stroke-width="1" opacity="0.3"/%3E%3C/pattern%3E%3C/defs%3E%3Crect width="100" height="100" fill="url(%23lines)" /%3E%3C/svg%3E"), linear-gradient(135deg, hsl(260 100% 65%), hsl(300 100% 75%))',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  color: 'transparent',
-                  textShadow: '0 0 40px rgba(138, 43, 226, 0.4)',
-                  filter: 'drop-shadow(0 0 20px rgba(138, 43, 226, 0.3))'
-                }}
-              >
-                through Data
-              </span>
+            <div className="hero-masked-text">
+              OPTIMIZE the WORLD through Data
             </div>
           </motion.h1>
 

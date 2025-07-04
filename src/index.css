@@ -60,9 +60,23 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 
-  .hero-mask-text {
-    background-size: 200px 200px, 100% 100%;
-    background-repeat: repeat, no-repeat;
-    background-position: 0 0, center center;
+  /* Hero text masking effect */
+  .hero-masked-text {
+    background-image: url('https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=1200&h=800&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    background-attachment: fixed;
+  }
+  
+  /* Fallback for browsers that don't support background-clip */
+  @supports not (background-clip: text) or not (-webkit-background-clip: text) {
+    .hero-masked-text {
+      color: hsl(var(--primary));
+      background: none;
+    }
   }
 }
