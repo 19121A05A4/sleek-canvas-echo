@@ -59,4 +59,10 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+
+  .hero-mask-text {
+    background-size: 200px 200px, 100% 100%;
+    background-repeat: repeat, no-repeat;
+    background-position: 0 0, center center;
+  }
 }

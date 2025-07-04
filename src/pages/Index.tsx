@@ -41,8 +41,8 @@ const Index = () => {
   // Render only the selected section when navigating via tabs
   if (currentSection === 'about') {
     return (
-      <div className="min-h-screen bg-background">
-        <Navigation />
+      <div className="min-h-screen bg-background overflow-hidden">
+        <Navigation currentSection={currentSection} />
         <AboutSection />
       </div>
     )
@@ -50,8 +50,8 @@ const Index = () => {
 
   if (currentSection === 'projects') {
     return (
-      <div className="min-h-screen bg-background">
-        <Navigation />
+      <div className="min-h-screen bg-background overflow-hidden">
+        <Navigation currentSection={currentSection} />
         <ProjectsSection />
       </div>
     )
@@ -59,8 +59,8 @@ const Index = () => {
 
   if (currentSection === 'work') {
     return (
-      <div className="min-h-screen bg-background">
-        <Navigation />
+      <div className="min-h-screen bg-background overflow-hidden">
+        <Navigation currentSection={currentSection} />
         <WorkSection />
       </div>
     )
@@ -68,8 +68,8 @@ const Index = () => {
 
   if (currentSection === 'blogs') {
     return (
-      <div className="min-h-screen bg-background">
-        <Navigation />
+      <div className="min-h-screen bg-background overflow-hidden">
+        <Navigation currentSection={currentSection} />
         <BlogsSection />
       </div>
     )
@@ -77,8 +77,8 @@ const Index = () => {
 
   if (currentSection === 'contact') {
     return (
-      <div className="min-h-screen bg-background">
-        <Navigation />
+      <div className="min-h-screen bg-background overflow-hidden">
+        <Navigation currentSection={currentSection} />
         <ContactSection />
       </div>
     )
@@ -87,7 +87,7 @@ const Index = () => {
   // Default home view with scrollable sections
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
+      <Navigation currentSection={currentSection} />
       <HeroSection />
       <WorkSection />
       <BlogsSection />

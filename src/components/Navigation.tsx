@@ -2,53 +2,48 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 const navItems = [
-  { name: 'Home', href: '#hero' },
-  { name: 'About', href: '#about', conditional: true },
+  { name: 'Home', href: '' },
+  { name: 'About', href: '#about' },
   { name: 'Work', href: '#work' },
   { name: 'Blogs', href: '#blogs' },
-  { name: 'Projects', href: '#projects', conditional: true },
+  { name: 'Projects', href: '#projects' },
   { name: 'Contact', href: '#contact' },
 ]
 
-export default function Navigation() {
+interface NavigationProps {
+  currentSection?: string
+}
+
+export default function Navigation({ currentSection = 'home' }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false)
-  const [activeSection, setActiveSection] = useState('hero')
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
-
-      // Update active section based on scroll position
-      const sections = ['hero', 'work', 'blogs', 'contact']
-      const current = sections.find(section => {
-        const element = document.getElementById(section)
-        if (element) {
-          const rect = element.getBoundingClientRect()
-          return rect.top <= 100 && rect.bottom >= 100
-        }
-        return false
-      })
-      
-      if (current) setActiveSection(current)
     }
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const handleClick = (href: string, isConditional: boolean = false) => {
-    if (isConditional || href === '#about' || href === '#projects') {
-      // For conditional sections, use hash navigation
-      window.location.hash = href
-    } else if (href === '#hero') {
-      // For home, clear hash and scroll to top
+  const handleClick = (href: string) => {
+    if (href === '') {
+      // For home, clear hash
       window.location.hash = ''
-      window.scrollTo({ top: 0, behavior: 'smooth' })
     } else {
-      // For regular sections, scroll to them
-      const element = document.querySelector(href)
-      element?.scrollIntoView({ behavior: 'smooth' })
+      // For all other sections, use hash navigation
+      window.location.hash = href
     }
+  }
+
+  const getActiveState = (item: typeof navItems[0]) => {
+    if (item.href === '' && currentSection === 'home') return true
+    if (item.href === '#about' && currentSection === 'about') return true
+    if (item.href === '#work' && currentSection === 'work') return true
+    if (item.href === '#blogs' && currentSection === 'blogs') return true
+    if (item.href === '#projects' && currentSection === 'projects') return true
+    if (item.href === '#contact' && currentSection === 'contact') return true
+    return false
   }
 
   return (
@@ -67,7 +62,7 @@ export default function Navigation() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            onClick={() => handleClick('#hero')}
+            onClick={() => handleClick('')}
             className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent cursor-pointer"
           >
             <strong>Sai</strong> Katari
@@ -80,15 +75,15 @@ export default function Navigation() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * index }}
-                onClick={() => handleClick(item.href, item.conditional)}
+                onClick={() => handleClick(item.href)}
                 className={`relative px-4 py-2 text-sm font-medium transition-colors duration-300 ${
-                  activeSection === item.href.slice(1)
+                  getActiveState(item)
                     ? 'text-primary'
                     : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
                 {item.name}
-                {activeSection === item.href.slice(1) && (
+                {getActiveState(item) && (
                   <motion.div
                     layoutId="activeNav"
                     className="absolute inset-0 bg-secondary rounded-md -z-10"
