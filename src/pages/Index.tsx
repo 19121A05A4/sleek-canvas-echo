@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Navigation from '@/components/Navigation'
 import HeroSection from '@/components/HeroSection'
 import AboutSection from '@/components/AboutSection'
+import SkillsSection from '@/components/SkillsSection'
 import WorkSection from '@/components/WorkSection'
 import BlogsSection from '@/components/BlogsSection'
 import ProjectsSection from '@/components/ProjectsSection'
@@ -16,6 +17,8 @@ const Index = () => {
       const hash = window.location.hash
       if (hash === '#about') {
         setCurrentSection('about')
+      } else if (hash === '#skills') {
+        setCurrentSection('skills')
       } else if (hash === '#projects') {
         setCurrentSection('projects')
       } else if (hash === '#work') {
@@ -44,6 +47,15 @@ const Index = () => {
       <div className="min-h-screen bg-background overflow-hidden">
         <Navigation currentSection={currentSection} />
         <AboutSection />
+      </div>
+    )
+  }
+
+  if (currentSection === 'skills') {
+    return (
+      <div className="min-h-screen bg-background overflow-hidden">
+        <Navigation currentSection={currentSection} />
+        <SkillsSection />
       </div>
     )
   }

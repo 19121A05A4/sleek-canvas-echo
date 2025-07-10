@@ -4,8 +4,9 @@ import { motion } from 'framer-motion'
 const navItems = [
   { name: 'Home', href: '' },
   { name: 'About', href: '#about' },
+  { name: 'Skills', href: '#skills' },
   { name: 'Work', href: '#work' },
-  { name: 'Blogs', href: '#blogs' },
+  { name: 'Blogs', href: '#blogs' },  
   { name: 'Projects', href: '#projects' },
   { name: 'Contact', href: '#contact' },
 ]
@@ -39,6 +40,7 @@ export default function Navigation({ currentSection = 'home' }: NavigationProps)
   const getActiveState = (item: typeof navItems[0]) => {
     if (item.href === '' && currentSection === 'home') return true
     if (item.href === '#about' && currentSection === 'about') return true
+    if (item.href === '#skills' && currentSection === 'skills') return true
     if (item.href === '#work' && currentSection === 'work') return true
     if (item.href === '#blogs' && currentSection === 'blogs') return true
     if (item.href === '#projects' && currentSection === 'projects') return true

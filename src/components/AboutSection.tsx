@@ -2,11 +2,6 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 
-const skills = [
-  'Python', 'SQL', 'JavaScript', 'React & Next.js',
-  'Azure Data Services', 'Google Analytics', 'Tableau', 'Power BI',
-  'Database Administration', 'Data Engineering', 'Machine Learning', 'Statistical Analysis'
-]
 
 const stats = [
   { number: '3', label: 'Microsoft Certifications' },
@@ -129,28 +124,6 @@ export default function AboutSection() {
               </div>
             </motion.div>
 
-            {/* Skills Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.9 }}
-              className="mt-8"
-            >
-              <h4 className="text-xl font-semibold mb-4">Skills & Technologies</h4>
-              <div className="flex flex-wrap gap-3">
-                {skills.map((skill, index) => (
-                  <motion.span
-                    key={skill}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ duration: 0.5, delay: 1.0 + index * 0.05 }}
-                    className="px-4 py-2 bg-secondary border border-border rounded-full text-sm font-medium hover:border-primary hover:bg-primary/10 transition-all duration-300"
-                  >
-                    {skill}
-                  </motion.span>
-                ))}
-              </div>
-            </motion.div>
           </motion.div>
 
           <motion.div
