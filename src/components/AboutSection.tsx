@@ -3,15 +3,35 @@ import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 
 const skills = [
-  'React & Next.js', 'TypeScript', 'Node.js', 'Python',
-  'Three.js', 'WebGL', 'UI/UX Design', 'System Architecture'
+  'Python', 'SQL', 'JavaScript', 'React & Next.js',
+  'Azure Data Services', 'Google Analytics', 'Tableau', 'Power BI',
+  'Database Administration', 'Data Engineering', 'Machine Learning', 'Statistical Analysis'
 ]
 
 const stats = [
-  { number: '50+', label: 'Projects Completed' },
-  { number: '3+', label: 'Years Experience' },
-  { number: '25+', label: 'Happy Clients' },
-  { number: '100%', label: 'Satisfaction Rate' }
+  { number: '3', label: 'Microsoft Certifications' },
+  { number: '1', label: 'Google Certification' },
+  { number: '2', label: 'University Degrees' },
+  { number: '100%', label: 'Data-Driven Solutions' }
+]
+
+const education = [
+  {
+    degree: "Master's Degree in Computer Science",
+    school: "University of Kansas, USA",
+    type: "graduate"
+  },
+  {
+    degree: "Bachelor's Degree in Computer Science", 
+    school: "Sree Vidyanikethan Engineering College, India",
+    type: "undergraduate"
+  }
+]
+
+const certifications = [
+  "Microsoft Certified: Azure Database Administrator Associate",
+  "Microsoft Certified: Azure Data Engineer Associate", 
+  "Google Data Analytics Certificate"
 ]
 
 export default function AboutSection() {
@@ -40,32 +60,80 @@ export default function AboutSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h3 className="text-2xl md:text-3xl font-bold mb-6">
-              Passionate about creating digital experiences
+              Passionate about working with <span className="bg-gradient-primary bg-clip-text text-transparent">data</span>
             </h3>
             
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                With over 3 years of experience in full-stack development, I specialize in 
-                creating immersive web applications that push the boundaries of what's possible 
-                in the browser.
+                I'm passionate about working with data — transforming raw numbers into actionable insights and building scalable systems that support data-driven decisions.
               </p>
               
               <p>
-                My expertise spans from crafting pixel-perfect user interfaces to architecting 
-                scalable backend systems. I'm passionate about emerging technologies like WebGL, 
-                Three.js, and modern JavaScript frameworks.
+                Alongside my experience in full-stack development, I've developed strong skills in data engineering, data analytics, and database administration through real-world projects and professional certifications.
               </p>
               
               <p>
-                When I'm not coding, you'll find me exploring new design trends, contributing to 
-                open-source projects, or sharing knowledge with the developer community.
+                I recently completed a freelance project where I built a full-featured website for Everest Liquors and analyzed their sales data to deliver valuable insights for their business strategy.
               </p>
             </div>
 
+            {/* Education Section */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.6 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="mt-8"
+            >
+              <h4 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                🎓 Education
+              </h4>
+              <div className="space-y-4">
+                {education.map((edu, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+                    className="p-4 bg-secondary/50 border border-border rounded-lg hover:border-primary transition-colors duration-300"
+                  >
+                    <h5 className="font-semibold text-foreground">{edu.degree}</h5>
+                    <p className="text-muted-foreground">{edu.school}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Certifications Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="mt-8"
+            >
+              <h4 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                🏅 Certifications
+              </h4>
+              <div className="space-y-3">
+                {certifications.map((cert, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                    className="flex items-center gap-3 p-3 bg-secondary/30 border border-border rounded-lg hover:border-primary transition-colors duration-300"
+                  >
+                    <div className="w-2 h-2 bg-gradient-primary rounded-full"></div>
+                    <span className="text-foreground font-medium">{cert}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Skills Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.9 }}
               className="mt-8"
             >
               <h4 className="text-xl font-semibold mb-4">Skills & Technologies</h4>
@@ -75,8 +143,8 @@ export default function AboutSection() {
                     key={skill}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
-                    className="px-4 py-2 bg-secondary border border-border rounded-full text-sm font-medium hover:border-primary transition-colors duration-300"
+                    transition={{ duration: 0.5, delay: 1.0 + index * 0.05 }}
+                    className="px-4 py-2 bg-secondary border border-border rounded-full text-sm font-medium hover:border-primary hover:bg-primary/10 transition-all duration-300"
                   >
                     {skill}
                   </motion.span>
