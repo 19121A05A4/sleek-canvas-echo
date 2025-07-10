@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Menu, X } from 'lucide-react'
 
 const navItems = [
   { name: 'Home', href: '' },
@@ -17,6 +18,7 @@ interface NavigationProps {
 
 export default function Navigation({ currentSection = 'home' }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,6 +37,8 @@ export default function Navigation({ currentSection = 'home' }: NavigationProps)
       // For all other sections, use hash navigation
       window.location.hash = href
     }
+    // Close mobile menu when item is clicked
+    setIsMobileMenuOpen(false)
   }
 
   const getActiveState = (item: typeof navItems[0]) => {
@@ -70,6 +74,7 @@ export default function Navigation({ currentSection = 'home' }: NavigationProps)
             <strong>Sai</strong> Katari
           </motion.button>
 
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item, index) => (
               <motion.button
@@ -95,7 +100,48 @@ export default function Navigation({ currentSection = 'home' }: NavigationProps)
               </motion.button>
             ))}
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 text-foreground hover:text-primary transition-colors duration-300"
+            aria-label="Toggle mobile menu"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden border-t border-border mt-4 pt-4 overflow-hidden"
+            >
+              <div className="flex flex-col space-y-2">
+                {navItems.map((item, index) => (
+                  <motion.button
+                    key={item.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 * index }}
+                    onClick={() => handleClick(item.href)}
+                    className={`text-left px-4 py-3 rounded-lg text-sm font-medium transition-colors duration-300 ${
+                      getActiveState(item)
+                        ? 'bg-primary/10 text-primary border border-primary/20'
+                        : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
+                    }`}
+                  >
+                    {item.name}
+                  </motion.button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.nav>
   )

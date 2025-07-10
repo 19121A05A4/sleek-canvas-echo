@@ -55,21 +55,21 @@ export default function SkillsSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <section id="skills" ref={ref} className="py-32 px-6 bg-gradient-subtle">
+    <section id="skills" ref={ref} className="py-16 md:py-32 px-4 md:px-6 bg-gradient-subtle">
       <div className="container mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-12 md:mb-20"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-6">
             My <span className="bg-gradient-primary bg-clip-text text-transparent">Skills</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full"></div>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {skillsData.map((category, index) => (
             <motion.div
               key={category.title}
@@ -92,10 +92,10 @@ export default function SkillsSection() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.5, delay: (index * 0.15) + (skillIndex * 0.1) }}
-                    className="flex items-center gap-3 p-3 bg-secondary/30 border border-border rounded-lg hover:border-primary/50 transition-colors duration-300"
+                    className="flex items-center gap-3 p-2 md:p-3 bg-secondary/30 border border-border rounded-lg hover:border-primary/50 transition-colors duration-300"
                   >
                     <div className="w-2 h-2 bg-gradient-primary rounded-full flex-shrink-0"></div>
-                    <span className="text-foreground font-medium">{skill}</span>
+                    <span className="text-foreground font-medium text-sm md:text-base">{skill}</span>
                   </motion.div>
                 ))}
               </div>

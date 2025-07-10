@@ -34,21 +34,21 @@ export default function AboutSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <section id="about" ref={ref} className="py-32 px-6 bg-gradient-subtle">
+    <section id="about" ref={ref} className="py-16 md:py-32 px-4 md:px-6 bg-gradient-subtle">
       <div className="container mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-12 md:mb-20"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-6">
             About <span className="bg-gradient-primary bg-clip-text text-transparent">Me</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full"></div>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -100 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -115,10 +115,10 @@ export default function AboutSection() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-                    className="flex items-center gap-3 p-3 bg-secondary/30 border border-border rounded-lg hover:border-primary transition-colors duration-300"
+                    className="flex items-center gap-3 p-2 md:p-3 bg-secondary/30 border border-border rounded-lg hover:border-primary transition-colors duration-300"
                   >
                     <div className="w-2 h-2 bg-gradient-primary rounded-full"></div>
-                    <span className="text-foreground font-medium">{cert}</span>
+                    <span className="text-foreground font-medium text-sm md:text-base">{cert}</span>
                   </motion.div>
                 ))}
               </div>
@@ -138,14 +138,14 @@ export default function AboutSection() {
                 initial={{ opacity: 0, y: 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                className="text-center p-6 bg-card border border-border rounded-lg hover:border-primary transition-all duration-300 group"
+                className="text-center p-4 md:p-6 bg-card border border-border rounded-lg hover:border-primary transition-all duration-300 group"
               >
                 <div className="text-3xl md:text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
                   {stat.number}
                 </div>
-                <div className="text-muted-foreground mt-2 font-medium">
-                  {stat.label}
-                </div>
+                 <div className="text-muted-foreground mt-2 font-medium text-xs md:text-sm">
+                   {stat.label}
+                 </div>
               </motion.div>
             ))}
           </motion.div>
