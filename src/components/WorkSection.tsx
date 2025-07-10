@@ -5,27 +5,11 @@ export default function WorkSection() {
   const workExperience = [
     {
       id: 1,
-      company: "Tech Innovations Inc.",
-      position: "Senior Data Scientist",
-      period: "2022 - Present",
-      description: "Leading data-driven optimization initiatives, developing machine learning models for business intelligence and process automation.",
-      technologies: ["Python", "TensorFlow", "SQL", "AWS", "Docker"]
-    },
-    {
-      id: 2,
-      company: "Analytics Solutions Ltd.",
-      position: "Data Analyst",
-      period: "2020 - 2022",
-      description: "Analyzed complex datasets to identify optimization opportunities, created automated reporting systems and data visualization dashboards.",
-      technologies: ["R", "Tableau", "PostgreSQL", "Apache Spark"]
-    },
-    {
-      id: 3,
-      company: "Global Consulting Group",
-      position: "Business Intelligence Intern",
-      period: "2019 - 2020",
-      description: "Supported data optimization projects, assisted in developing predictive models for client operations and performance metrics.",
-      technologies: ["Excel", "Power BI", "MySQL", "Python"]
+      company: "Everest Liquors",
+      position: "Freelance Web Developer & Data Analyst",
+      period: "Project",
+      description: "Developed a responsive business website for Everest Liquors and conducted sales data analysis to uncover trends, customer behavior, and product performance. Delivered real-time insights to support their business strategy. This project gave me hands-on experience in data analytics, real-time problem solving, and working with a real business client.",
+      technologies: ["HTML", "CSS", "JavaScript", "Python", "Excel", "SQL"]
     }
   ]
 
